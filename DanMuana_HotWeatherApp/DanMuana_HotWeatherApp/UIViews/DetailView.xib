@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="detailView" id="TlS-dg-QVX" customClass="LookUpDetailView" customModule="DanMuana_HotWeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="72" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZZ-UP-mmy" userLabel="temp">
+                    <rect key="frame" x="57" y="20" width="300" height="90"/>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="80"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="broken clouds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQz-de-NZm" userLabel="weatherDescription">
+                    <rect key="frame" x="20" y="293" width="151" height="25"/>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pe-OQ-U9N" userLabel="weather">
+                    <rect key="frame" x="20" y="242" width="129" height="43"/>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="38"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feels Like: 78" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6t-ME-MVZ" userLabel="feelsLike">
+                    <rect key="frame" x="231" y="120" width="145" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="hdg-us-TxD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="SDe-Ms-wtQ"/>
+            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="4pe-OQ-U9N" firstAttribute="top" secondItem="SDe-Ms-wtQ" secondAttribute="top" constant="242" id="25F-e8-JSG"/>
+                <constraint firstItem="SDe-Ms-wtQ" firstAttribute="trailing" secondItem="W6t-ME-MVZ" secondAttribute="trailing" constant="38" id="AdL-qI-eO0"/>
+                <constraint firstItem="4pe-OQ-U9N" firstAttribute="leading" secondItem="TlS-dg-QVX" secondAttribute="leadingMargin" id="Fhj-7f-hKe"/>
+                <constraint firstItem="aQz-de-NZm" firstAttribute="top" secondItem="4pe-OQ-U9N" secondAttribute="bottom" constant="8" id="H3E-0i-FKx"/>
+                <constraint firstItem="4pe-OQ-U9N" firstAttribute="leading" secondItem="aQz-de-NZm" secondAttribute="leading" id="PgD-X8-Ll0"/>
+                <constraint firstItem="BZZ-UP-mmy" firstAttribute="top" secondItem="SDe-Ms-wtQ" secondAttribute="top" constant="20" id="Q8m-50-FYs"/>
+                <constraint firstItem="BZZ-UP-mmy" firstAttribute="centerX" secondItem="TlS-dg-QVX" secondAttribute="centerX" id="Rfi-xS-S3G"/>
+                <constraint firstItem="BZZ-UP-mmy" firstAttribute="leading" secondItem="SDe-Ms-wtQ" secondAttribute="leading" constant="57" id="dgT-k5-ccX"/>
+                <constraint firstItem="W6t-ME-MVZ" firstAttribute="top" secondItem="BZZ-UP-mmy" secondAttribute="bottom" constant="10" id="nqt-vE-ciD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="feelsLikeLabel" destination="W6t-ME-MVZ" id="sOI-mx-dlS"/>
+                <outlet property="tempLabel" destination="BZZ-UP-mmy" id="Jc9-DP-dyH"/>
+                <outlet property="weatherDescriptionLabel" destination="aQz-de-NZm" id="aNC-sC-Raw"/>
+                <outlet property="weatherLabel" destination="4pe-OQ-U9N" id="DmY-xJ-WFT"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="77.445652173913047"/>
+        </view>
+    </objects>
+</document>
