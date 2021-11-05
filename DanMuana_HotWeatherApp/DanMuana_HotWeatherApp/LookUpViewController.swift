@@ -10,6 +10,7 @@ import UIKit
 class LookUpViewController: UIViewController {
     
     @IBOutlet weak var cityNameTextField: UITextField!
+    private var isErrorTextShowing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +44,16 @@ class LookUpViewController: UIViewController {
             for view in self.view.subviews where (view is UILabel && (view.viewWithTag(34404) != nil)) {
                 view.removeFromSuperview()
             }
+            self.isErrorTextShowing = false
         }
     }
     
     func errorLabel(_ errorText: String) {
+        if isErrorTextShowing {
+            return
+        } else {
+            isErrorTextShowing = true
+        }
         
         setRemoveErrorLabel()
         
