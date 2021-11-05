@@ -35,7 +35,7 @@ class ServiceModel {
     func buildURL() -> String {
         URL_BUILT = URL_BASE + URL_LOOKUP_TYPE + URL_LOOKUP_INPUT + "&units=imperial&appid=" + URL_API_KEY
         
-        return URL_BUILT
+        return URL_BUILT.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? URL_BUILT
     }
     
     // MARK: - Network Service Calls
@@ -62,9 +62,12 @@ class ServiceModel {
                     if response.statusCode == 200 {
                         let items = try JSONDecoder().decode(LookUp.self, from: data)
                         onSuccess(items)
+                    } else if response.statusCode == 401 {
+                        onError("Invalid API Key")
+                    } else if response.statusCode == 404 {
+                        onError("City not found! Check Spelling")
                     } else {
-                        let errorDescription = try JSONDecoder().decode(ErrorDescription.self, from: data)
-                        onError("ERROR Response: \(response.statusCode) | Description: \(errorDescription.message)")
+                        onError("ERROR Response: \(response.statusCode)")
                     }
                 } catch {
                     onError(error.localizedDescription)
