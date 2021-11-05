@@ -23,6 +23,7 @@ class LookUpViewController: UIViewController {
             self.updateView(result)
             
         }) { (errorMessage) in
+            self.errorLabel(errorMessage.debugDescription)
             debugPrint(errorMessage)
         }
     }
@@ -37,6 +38,26 @@ class LookUpViewController: UIViewController {
         }
     }
     
+    func setRemoveErrorLabel() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            print("Timer fired!")
+            for view in self.view.subviews where (view is UILabel && (view.viewWithTag(34404) != nil)) {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
+    func errorLabel(_ errorText: String) {
+        
+        setRemoveErrorLabel()
+        
+        let errorLabel = UILabel.initLabelAtPosition(x: Int(view.frame.width)/2, y: Int(cityNameTextField.frame.origin.y) - 50)
+        
+        errorLabel.text = errorText
+        view.addSubview(errorLabel)
+        
+    }
+    
     @IBAction func CityNameTextFieldDonePress(_ sender: UITextField) {
         sender.resignFirstResponder()
     }
@@ -46,7 +67,7 @@ class LookUpViewController: UIViewController {
         if let lookupInput = cityNameTextField.text {
             if lookupInput == "" {
                 //display empty input error
-                print("Enter a City, State, or ZipCode")
+                errorLabel("Enter a City, State, or ZipCode")
             } else {
                 lookupWeather(lookupInput)
             }
