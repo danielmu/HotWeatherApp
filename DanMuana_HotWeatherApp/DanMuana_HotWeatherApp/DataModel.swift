@@ -7,11 +7,6 @@
 
 import Foundation
 
-// MARK: - Error Decoding / Description
-struct ErrorDescription: Codable {
-    let message: String
-}
-
 // MARK: - LookUp
 struct LookUp: Codable {
     let coord: Coord
