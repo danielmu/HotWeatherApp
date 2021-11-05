@@ -9,10 +9,6 @@ import UIKit
 
 class LookUpViewController: UIViewController {
     
-    var lookupResult: LookUp?
-    var weather: [Weather]?
-    var main: Main?
-    
     @IBOutlet weak var cityNameTextField: UITextField!
     
     override func viewDidLoad() {
@@ -23,24 +19,20 @@ class LookUpViewController: UIViewController {
         //fetch data
         ServiceModel.shared.setLookUpInput(lookupInput)
         ServiceModel.shared.lookupWeather(onSuccess: { (result) in
-            self.lookupResult = result
-            self.updateView()
+            
+            self.updateView(result)
             
         }) { (errorMessage) in
             debugPrint(errorMessage)
         }
     }
     
-    func updateView() {
+    func updateView(_ lookupResult: LookUp?) {
         //populate data and move to list view
         if let lookup = lookupResult {
-            weather = lookup.weather
-            main = lookup.main
-            
             let listVC = LookUpListViewController(weatherList: lookup.weather, main: lookup.main)
             
             listVC.title = lookup.name
-            
             self.present(UINavigationController(rootViewController: listVC), animated: true)
         }
     }
