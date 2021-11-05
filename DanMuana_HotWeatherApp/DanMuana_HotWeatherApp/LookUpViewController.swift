@@ -40,7 +40,6 @@ class LookUpViewController: UIViewController {
     
     func setRemoveErrorLabel() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            print("Timer fired!")
             for view in self.view.subviews where (view is UILabel && (view.viewWithTag(34404) != nil)) {
                 view.removeFromSuperview()
             }
